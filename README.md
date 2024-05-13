@@ -25,3 +25,13 @@ Fitur lain dari vercel yaitu berupa pembuatan database, di praktikum ini contoh 
 ![alt text](docs/prak1-soal3.png)
 
 Mencoba menginputkan sebuah data dan tabel ke dalam database yang telah dibuat melalui file seed.js, selain itu mencoba untuk menentukan dat aapa saja yan akan diinputkan ditiap tabel yang akan dibuat di file data.js
+
+#### Soal 4 : Jelaskan apa yang telah Anda pelajari ? Cobalah eksekusi query SQL yang lain sesuai kreasi Anda, capture hasilnya dan jelaskan!
+
+![alt text](docs/prak1-soal4.png)
+
+Query SQL tersebut mengambil nilai amount dan name dari tabel invoices dan customers secara bersamaan berdasarkan kondisi invoices.amount = 666. Ini dilakukan dengan menggabungkan data dari kedua tabel menggunakan kolom customer_id dan id yang sesuai.
+
+![alt text](docs/prak1-soal4.png)
+
+Sama seperti query sebelumnya hanya saja kondisinya berbeda yaitu dimana data ditampilkan yang hanya memiliki amount diatas 10000
