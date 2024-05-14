@@ -51,3 +51,9 @@ Pertama, mendefinisikan struktur data melalui model untuk setiap tabel. Kemudian
 ![alt text](docs/prak2-soal6.png)
 
 Menampilkan grafik yang telah dibuat pada file revenue-chart.tsx yang berada di folder moleculs, kemudian memanggil function RevenueChart yang berada pada revenue-chart.tsx di file page.tsx dengan cara dilakukan import
+
+#### Soal 7 :
+
+![alt text](docs/prak2-soal7.png)
+
+Menampilkan semua data yang berada di tabel invoices yang mengambil di database kemudian menampilkannya.

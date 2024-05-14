@@ -43,7 +43,7 @@ export default async function LatestInvoice() {
                   </div>
                 </div>
                 <p
-                  className={`${lusitana.className} truncate text-sm font-medium md:text-base`}
+                  className={`${lusitana.className} truncate text-gray-500 text-sm font-medium md:text-base`}
                 >
                   {invoice.amount}
                 </p>
