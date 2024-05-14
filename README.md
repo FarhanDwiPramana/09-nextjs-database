@@ -38,10 +38,16 @@ Sama seperti query sebelumnya hanya saja kondisinya berbeda yaitu dimana data di
 
 ### Praktikum 2: Fetching Data (API)
 
-#### Soal 5 :
+#### Soal 5 : Capture dan lampirkan link aplikasi Anda yang telah berhasil di deploy, kemudian buatlah laporan di file README.md. Jelaskan apa yang telah Anda pelajari ?
 
 ![alt text](docs/prak2-soal5.png)
 
 [link](http://localhost:3000/)
 
 Pertama, mendefinisikan struktur data melalui model untuk setiap tabel. Kemudian, menggunakan model query untuk mengakses data dari database dan memprosesnya sebelum ditampilkan di laman. Selanjutnya, membuat komponen dan laman yang diperlukan, tetapi tunda tampilan data sampai laman dapat dijalankan untuk mencegah error. Setelah komponen selesai, perbarui halaman utama (page.tsx) agar dapat menampilkan komponen yang telah dibuat saat server dijalankan.
+
+#### Soal 6 : Lakukan capture dan push hasilnya, kemudian buatlah laporan di file README.md. Jelaskan apa yang telah Anda pelajari ?
+
+![alt text](docs/prak2-soal6.png)
+
+Menampilkan grafik yang telah dibuat pada file revenue-chart.tsx yang berada di folder moleculs, kemudian memanggil function RevenueChart yang berada pada revenue-chart.tsx di file page.tsx dengan cara dilakukan import
