@@ -52,8 +52,58 @@ Pertama, mendefinisikan struktur data melalui model untuk setiap tabel. Kemudian
 
 Menampilkan grafik yang telah dibuat pada file revenue-chart.tsx yang berada di folder moleculs, kemudian memanggil function RevenueChart yang berada pada revenue-chart.tsx di file page.tsx dengan cara dilakukan import
 
-#### Soal 7 :
+#### Soal 7 : Lakukan capture dan push hasilnya, kemudian buatlah laporan di file README.md. Jelaskan apa yang telah Anda pelajari ?
 
 ![alt text](docs/prak2-soal7.png)
 
 Menampilkan semua data yang berada di tabel invoices yang mengambil di database kemudian menampilkannya.
+
+### Tugas Praktikum
+
+#### Soal 1 : Jika Anda perhatikan pada file src\app\page.tsx untuk komponen Card sebenarnya telah dibuat sebagai molecules pada file src\app\components\molecules\card.tsx yaitu komponen CardWrapper.
+
+![alt text](docs/tugas-soal1.png)
+
+#### Soal 2 : Perhatikan fungsi fetchCardData() (pada file src\model\query.tsx) dari soal nomor 1. Jelaskan maksud kode dan kueri yang dilakukan dalam fungsi tersebut!
+
+```
+const invoiceCountPromise = sql`SELECT COUNT(_) FROM invoices`;
+const customerCountPromise = sql`SELECT COUNT(_) FROM customers`;
+const invoiceStatusPromise = sql`SELECT
+    SUM(CASE WHEN status = 'paid' THEN amount ELSE 0 END) AS "paid",
+    SUM(CASE WHEN status = 'pending' THEN amount ELSE 0 END) AS "pending"
+    FROM invoices`;
+```
+
+Kode diatas merupakan query yang berguna untuk menghitung banyak nya data pada tabel invoices dan customers yang akan disimpan pada sebuah variabel invoiceCountPromise dan customerCountPromise, kemudian untuk variabel invoiceStatusPromise digunakan untuk menyimpan hasil perhitungan total jumlah amount yang telah dibayar dengan status 'paid' dan total jumlah amount yang belum dibayar atau tertunda dengan status 'pending' yang kemudian menghasilkan menjadi dua kolom yaitu 'paid' dan 'kolom'
+
+```
+const data = await Promise.all([
+    invoiceCountPromise,
+    customerCountPromise,
+    invoiceStatusPromise,
+]);
+
+```
+
+Kode diatas digunakan untuk mengumpulkan data, dimana dengan menggunakan promise secara paralel (Promise.all) dan setiap promise berisikan query SQL yang mengambil data dari database, setelah promise selesai hasilnya akan dikumpulkan ke dalam array data
+
+```
+const numberOfInvoices = Number(data[0].rows[0].count ?? "0");
+const numberOfCustomers = Number(data[1].rows[0].count ?? "0");
+const totalPaidInvoices = formatCurrency(data[2].rows[0].paid ?? "0");
+const totalPendingInvoices = formatCurrency(data[2].rows[0].pending ?? "0");
+
+```
+
+1. Kode didalam numberOfInvoices dan numberOfCustomers digunakan untuk mengambil nilai 'count' dari hasil query pertama yaitu invoiceCountPromise dan dari hasil query kedua yaitu customerCountPromise yang telah dijalankan dan nilai nya nya akan dilakukan konversi tipe datanya menjadi number. Jika nilai 'count' tidak tersedia, maka otomatis akan diberikan nilai default yaitu '0'
+2. Kode didalam totalPaidInvoices dan totalPendingInvoices digunakan untuk mengambil nilai 'paid' dari hasil query ketiga yaitu invoicesStatusPromise yang telah dijalankan dan mengambil nilai 'pending' dari hasil query query yang sama, yang kemudian akan dikeonversikan hasilnya ke dalam format angka.
+
+```
+catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch card data.");
+}
+```
+
+Kode diatas digunakan untuk menangani ketika didalam kode try terjadi error, dan akan menampilkan pesan berupa "Database Error: ...", serta untuk kode throw new error yaitu digunakan untuk melempar error baru dengan "Failed to fetch card data"
